@@ -1,0 +1,29 @@
+{
+  "name": "my-movies-api",
+  "version": "1.0.0",
+  "description": "Here you can find the movies you like # my page you can find my page here: https://yuhuiwu92.github.io/my-movies-api/",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/YuhuiWu92/my-movies-api.git"
+  },
+  "keywords": [],
+  "author": "Yuhui Wu",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/YuhuiWu92/my-movies-api/issues"
+  },
+  "homepage": "https://github.com/YuhuiWu92/my-movies-api#readme",
+  "dependencies": {
+    "body-parser": "^1.19.1",
+    "express": "^4.17.2",
+    "lodash": "^4.17.21"
+  },
+  "devDependencies": {
+    "eslint": "^8.7.0"
+  }
+}
