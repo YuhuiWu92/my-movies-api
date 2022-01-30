@@ -11,8 +11,73 @@
 
 <body>
     <h1>MY MOVIES_API</h1>
+    <p> This web application will provide users with access to information about different movies, directors, and genres. Users will be able to sign up, update their personal information, and create a list of their favorite movies.</p>
 
-    <h4> This web application will provide users with access to information about different movies, directors, and genres. Users will be able to sign up, update their personal information, and create a list of their favorite movies.</h4>
+    <h1>TABLE</h1>
+    <table>
+        <tr>
+            <th>Request</th>
+            <th>URL</th>
+            <th>HTTP Method</th>
+            <th>Response</th>
+        </tr>
+        <tr>
+            <td>Return a list of ALL movies to the user</td>
+            <td>'/movies'</td>
+            <td>GET</td>
+            <td>Returns a JSON list of movies.</td>
+        </tr>
+        <tr>
+            <td>Return data about a single movie by title to the user</td>
+            <td>'/movies/:title'</td>
+            <td>GET</td>
+            <td>Returns a JSON data about a specific movie.</td>
+        </tr>
+        <tr>
+            <td>Return data about a director by name</td>
+            <td>"/movies/directors/:directorName"</td>
+            <td>GET</td>
+            <td>Returns a JSON data about the director.</td>
+        </tr>
+        <tr>
+            <td>Return data about a genre description by genre name.</td>
+            <td>"/movies/genre/:genreName"</td>
+            <td>GET</td>
+            <td>Returns a JSON data with a description of that genre.</td>
+        </tr>
+        <tr>
+            <td>Allow new users to register</td>
+            <td>/users/:newUser</td>
+            <td>POST</td>
+            <td>Will add new user to JSON object.</td>
+        </tr>
+        <tr>
+            <td>Allow users to update their user name</td>
+            <td>"/users/:id"</td>
+            <td>PUT</td>
+            <td>Returns the data fields that was updated by the user.</td>
+        </tr>
+
+        <tr>
+            <td>Allow users to add a movie to their list of favorites</td>
+            <td>"/users/:id/:movieTitle"</td>
+
+            <td>POST</td>
+            <td>Returns a text confirming which movie was added successfully.</td>
+        </tr>
+        <tr>
+            <td>Allow users to remove a movie from their list of favorites</td>
+            <td>"/users/:name/:favouriteMovies"</td>
+            <td>DELETE</td>
+            <td>Returns a text confirming which movie was removed successfully.</td>
+        </tr>
+        <tr>
+            <td>Allow existing user to deregister</td>
+            <td>"/users/:id"</td>
+            <td>DELETE</td>
+            <td>Return a text confirming that the user was deleted.</td>
+        </tr>
+    </table>
 </body>
 
 </html>

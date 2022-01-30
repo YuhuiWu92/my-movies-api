@@ -52,7 +52,7 @@ let movies = [{
 ];
 
 // create users:(post)
-app.post('/users', (req, res) => {
+app.post('/newUser', (req, res) => {
     const newUser = req.body;
     if (newUser.name) {
         newUser.id = uuid.v4();
@@ -78,7 +78,7 @@ app.post('/users/:id/:movieTitle', (req, res) => {
 
 });
 
-// update:(put)
+// update:(put) update user's name
 app.put('/users/:id', (req, res) => {
     const { id } = req.params;
     const updateUser = req.body;
@@ -124,7 +124,7 @@ app.get('/movies/genre/:genreName', (req, res) => {
 
 // read: get movie by DirectorName
 
-app.get('/movies/director/:directorName', (req, res) => {
+app.get('/movies/directors/:directorName', (req, res) => {
     const { directorName } = req.params;
     const director = movies.find(movie => movie.Director.Name === directorName).Director;
 
@@ -156,8 +156,8 @@ app.delete('/users/:id', (req, res) => {
 
     if (user) {
         users = users.filter(user => user.id != id);
-        res.json(users);
-        //res.status(200).send(` user ${id} has been deleted.`);
+        // res.json(users);
+        res.status(200).send(` user ${id} has been deleted.`);
     } else {
         res.status(400).send('no such user')
     }
