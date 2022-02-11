@@ -1,55 +1,78 @@
-{
-    "name": "my-movies-api",
-    "version": "1.0.0",
-    "description": "Here you can find the movies you like # my page you can find my page here: https://yuhuiwu92.github.io/my-movies-api/",
-    "main": "index.js",
-    "scripts": {
-        "test": "echo \"Error: no test specified\" && exit 1",
-        "start": "node index.js",
-        "devStart": "nodemon index.js"
-    },
-    "repository": {
-        "type": "git",
-        "url": "git+https://github.com/YuhuiWu92/my-movies-api.git"
-    },
-    "keywords": [],
-    "author": "Yuhui Wu",
-    "license": "ISC",
-    "bugs": {
-        "url": "https://github.com/YuhuiWu92/my-movies-api/issues"
-    },
-    "homepage": "https://github.com/YuhuiWu92/my-movies-api#readme",
-    "dependencies": {
-        "body-parser": "^1.19.1",
-        "express": "^4.17.2",
-        "lodash": "^4.17.21",
-        "mongoose": "^6.2.1",
-        "morgan": "^1.10.0",
-        "nodemon": "^2.0.15",
-        "uuid": "^8.3.2"
-    },
-    "devDependencies": {
-        "eslint": "^8.7.0"
-    }
-}
-pp.use(express.static('public'));
+const express = require('express'),
+    bodyParser = require("body-parser"),
+    uuid = require("uuid"),
+    morgan = require('morgan');
+const app = express();
+const mongoose = require('mongoose');
+const Models = require('./models.js');
 
-// default text response at "/"
-app.get()
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+
+const Movies = Models.Movie;
+const Users = Models.User;
+const Genres = Models.Genre;
+const Directors = Models.Director;
+
+mongoose.connect('mongodb://localhost:27017/test', { useNewUrlParser: true, useUnifiedTopology: true });
+
+app.use(express.static('public'));
 
 // GET requests
+// default text response at "/"
+
 app.get('/', (req, res) => {
-    res.send('<p>Discover the top, most popular movies available now! Across theaters, streaming, and on-demand, these are the movies Rotten Tomatoes users are embracing at this very moment, including Eternals, Scream, and Don’t Look Up. Click on each movie for reviews and trailers, and see where to watch.</p>');
-
+    res.send('Welcome to Myfilx!');
 });
 
-
-app.get('/documentation', (req, res) => {
-    res.sendFile('public/documentation.html', { root: __dirname });
-});
-
+// get all movies
 app.get('/movies', (req, res) => {
-    res.json(topMovies);
+    Movies.find()
+        .then((movies) => {
+            res.status(201).json(movies);
+        })
+        .catch((err) => {
+            console.error(err);
+            res.status(500).send("Error" + err);
+        });
+});
+
+// get all users
+app.get('/users', (req, res) => {
+        Users.find()
+            .then((users) => {
+                res.status(201).json(users);
+            })
+            .catch((err) => {
+                console.error(err);
+                res.status(500).send("Error" + err);
+            });
+    })
+    // get a user by username
+app.get("/users/:Username", (req, res) => {
+    Users.findOne((user) => {
+        if (!user) {
+            res.status(400).send(req.params.Username + 'was not found');
+        } else {
+            res.status(200).json(user);
+        }
+    })
+})
+
+// Return datas about a single movie by title
+app.get("/movies/:Title", (req, res) => {
+    Movies.findOne({ Title: req.params.Title })
+        .then((movie) => {
+            if (!movie) {
+                res.status(400).send(req.params.Title + ' was not found');
+            } else {
+                res.status(200).json(movie);
+            }
+        })
+        .catch((err) => {
+            console.error(err);
+            res.status(500).send("Error" + err);
+        });
 });
 
 // errorHandling
