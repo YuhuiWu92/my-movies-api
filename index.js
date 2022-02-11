@@ -1,23 +1,41 @@
-const express = require('express'),
-    morgan = require('morgan');
-const app = express();
-
-let topMovies = [{
-        title: 'SPIDER-MAN: NO WAY HOME',
-        director: 'Jon Watts'
+{
+    "name": "my-movies-api",
+    "version": "1.0.0",
+    "description": "Here you can find the movies you like # my page you can find my page here: https://yuhuiwu92.github.io/my-movies-api/",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "start": "node index.js",
+        "devStart": "nodemon index.js"
     },
-    {
-        title: 'IN THE HEIGHTS',
-        author: 'Jon M. Chu'
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/YuhuiWu92/my-movies-api.git"
     },
-    {
-        title: 'PIG',
-        author: 'Michael Sarnoski'
+    "keywords": [],
+    "author": "Yuhui Wu",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/YuhuiWu92/my-movies-api/issues"
+    },
+    "homepage": "https://github.com/YuhuiWu92/my-movies-api#readme",
+    "dependencies": {
+        "body-parser": "^1.19.1",
+        "express": "^4.17.2",
+        "lodash": "^4.17.21",
+        "mongoose": "^6.2.1",
+        "morgan": "^1.10.0",
+        "nodemon": "^2.0.15",
+        "uuid": "^8.3.2"
+    },
+    "devDependencies": {
+        "eslint": "^8.7.0"
     }
-];
+}
+pp.use(express.static('public'));
 
-app.use(morgan('common'));
-app.use(express.static('public'));
+// default text response at "/"
+app.get()
 
 // GET requests
 app.get('/', (req, res) => {
