@@ -4,7 +4,6 @@
     "description": "Here you can find the movies you like # my page you can find my page here: https://yuhuiwu92.github.io/my-movies-api/",
     "main": "index.js",
     "scripts": {
-        "test": "echo \"Error: no test specified\" && exit 1",
         "start": "node index.js",
         "devStart": "nodemon index.js"
     },
