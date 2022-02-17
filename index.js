@@ -4,7 +4,7 @@ const Movies = Models.Movie;
 const Users = Models.User;
 const { check, validationResult } = require('express-validator');
 
-mongoose.connect('mongodb+srv://admin:admin@yuhuidb.y3ahh.mongodb.net/myFlimDB?retryWrites=true&w=majority', { useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.connect('mongodb+srv://admin:admin@yuhuidb.y3ahh.mongodb.net/my-film-flix?retryWrites=true&w=majority', { useNewUrlParser: true, useUnifiedTopology: true });
 
 const express = require('express'),
     morgan = require('morgan'),
