@@ -4,7 +4,15 @@ const Movies = Models.Movie;
 const Users = Models.User;
 const { check, validationResult } = require('express-validator');
 
+// Uncomment this only for HEROKU
 mongoose.connect(process.env.CONNECTION_URI, { useNewUrlParser: true, useUnifiedTopology: true });
+
+
+// Uncomment this if you want to connect to Mongo Atlas DB
+// mongoose.connect("mongodb+srv://admin:admin@yuhuidb.y3ahh.mongodb.net/myFlimDB?retryWrites=true&w=majority", { useNewUrlParser: true, useUnifiedTopology: true });
+
+// Comment this when you want to push things to heroku and uncomment if you want to connect to your local DB
+// mongoose.connect("mongodb://localhost:27017/myFlimDB", { useNewUrlParser: true, useUnifiedTopology: true });
 
 const express = require('express'),
     morgan = require('morgan'),
