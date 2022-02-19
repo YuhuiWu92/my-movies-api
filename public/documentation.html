@@ -6,10 +6,11 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MY MOVIES_API</title>
+    <title>MY Film Flix_API</title>
     <style>
         table {
             border-collapse: collapse;
+            display: table;
         }
         
         table,
@@ -20,14 +21,22 @@
         
         th,
         td {
-            text-align: center;
+            text-align: left;
+        }
+        
+        tr {
+            display: table-row;
+        }
+        
+        td {
+            display: table-cell
         }
     </style>
 
 </head>
 
 <body>
-    <h1>MY MOVIES_API</h1>
+    <h1>MY Film Flix_API</h1>
     <p> This web application will provide users with access to information about different movies, directors, and genres. Users will be able to sign up, update their personal information, and create a list of their favorite movies.</p>
 
     <h1>TABLE</h1>
@@ -67,12 +76,11 @@
                 "update1@gmail.com", "Birthday": "1980-09-03T00:00:00.000Z", "FavoriteMovies": [], "__v": 0 }, "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MjBlMGFlODkzMzM2ZWEyNGQ2MTdkMWYiLCJVc2VybmFtZSI6" }
             </td>
         </tr>
-        <tr>
-            <td>
-                The following Endpionts operations need to be performed after logging in and obtaining the token.
-            </td>
-        </tr>
 
+    </table>
+    <h2>IMPORTANT! The following Endpionts operations need to be performed after logging in and obtaining the token.</h2>
+
+    <table>
         <tr>
             <td>Return a list of ALL movies to the user</td>
             <td>'/movies'</td>
@@ -81,9 +89,6 @@
             <td>A JSON object holding data about all movies
             </td>
         </tr>
-
-
-
         <tr>
             <td>Return data about a single movie by title to the user</td>
             <td>'/movies/:Title'</td>
@@ -156,9 +161,12 @@
                 <td>Allow existing user to deregister</td>
                 <td>'/users/:Username'</td>
                 <td>DELETE</td>
+                <td>none</td>
                 <td>Return a text confirming that the user was successfully deleted.</td>
             </tr>
     </table>
+
+
 </body>
 
 </html>
