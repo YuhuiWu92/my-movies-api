@@ -39,6 +39,39 @@
             <th>Request body data format</th>
             <th>Response body data format</th>
         </tr>
+        <tr>
+            <td>Return a list of ALL movies to the user</td>
+            <td>'/doc'</td>
+            <td>GET</td>
+            <td>none</td>
+            <td>All Endpoints for MyFilmFlix App in a HTML page.
+            </td>
+        </tr>
+        <tr>
+            <td>Allow new users to register</td>
+            <td>'/users'</td>
+            <td>POST</td>
+            <td>A JSON object holding data about a user to add, structured like: "Username":"Susanna Hansent","Password":"susannalove","Email":"susanna@gmx.de","Birthday":{"$date":"1948-03-04"},"FavoriteMovies":[
+            </td>
+            <td>A JSON object holding data about the user that has been just added, structured like: {"_id":{"$oid":"6201a751a3b7ac67dba1ac41"},"Username":"Susanna Hansent","Password":"susannalove","Email":"susanna@gmx.de","Birthday":{"$date":"1948-03-04T00:00:00.000Z"}}
+            </td>
+        </tr>
+
+        <tr>
+            <td>Allow new users to register</td>
+            <td>'/login'</td>
+            <td>POST</td>
+            <td>A Params Key and Value holding data about a user to login, structured like: "Username":"Magelitt","Password":"ilovedonna2233".
+            </td>
+            <td>A JSON object holding data about the user that has been just login, structured like: { "user": { "_id": "620e0ae893336ea24d617d1f", "Username": "Magelitt", "Password": "$2b$10$75j78JGXj86bBv7VUBDoOuFLNQzDxjcQCln47/XHSXLF7Hzy.WGcu", "Email":
+                "update1@gmail.com", "Birthday": "1980-09-03T00:00:00.000Z", "FavoriteMovies": [], "__v": 0 }, "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MjBlMGFlODkzMzM2ZWEyNGQ2MTdkMWYiLCJVc2VybmFtZSI6" }
+            </td>
+        </tr>
+        <tr>
+            <td>
+                The following Endpionts operations need to be performed after logging in and obtaining the token.
+            </td>
+        </tr>
 
         <tr>
             <td>Return a list of ALL movies to the user</td>
@@ -48,6 +81,9 @@
             <td>A JSON object holding data about all movies
             </td>
         </tr>
+
+
+
         <tr>
             <td>Return data about a single movie by title to the user</td>
             <td>'/movies/:Title'</td>
@@ -89,15 +125,7 @@
                 <td>A JSON object holding the description of the genre
                 </td>
             </tr>
-            <tr>
-                <td>Allow new users to register</td>
-                <td>'/users'</td>
-                <td>POST</td>
-                <td>A JSON object holding data about a user to add, structured like: "Username":"Susanna Hansent","Password":"susannalove","Email":"susanna@gmx.de","Birthday":{"$date":"1948-03-04"},"FavoriteMovies":[
-                </td>
-                <td>A JSON object holding data about the user that has been just added, structured like: {"_id":{"$oid":"6201a751a3b7ac67dba1ac41"},"Username":"Susanna Hansent","Password":"susannalove","Email":"susanna@gmx.de","Birthday":{"$date":"1948-03-04T00:00:00.000Z"}}
-                </td>
-            </tr>
+
             <tr>
                 <td>Allow users to update their user information</td>
                 <td>'/users/:Username'</td>
