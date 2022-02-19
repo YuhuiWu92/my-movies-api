@@ -51,8 +51,8 @@ app.get('/', (req, res) => {
     res.send('Welcome to My film flix!');
 });
 // 
-app.get('/doc', (req, res) => {
-    res.sendFile('./public/documentation.html');
+app.get('/docs', (req, res) => {
+    res.sendFile(__dirname + '/public/documentation.html');
 });
 
 // get all movies
