@@ -55,8 +55,21 @@ app.get('/docs', (req, res) => {
     res.sendFile(__dirname + '/public/documentation.html');
 });
 
-// get all movies
-app.get('/movies', passport.authenticate('jwt', { session: false }), (req, res) => {
+// get all movies,uncommen this to add authentication middleware
+/*  app.get('/movies', passport.authenticate('jwt', { session: false }), (req, res) => {
+    Movies.find()
+        .then((movies) => {
+            res.status(200).json(movies);
+        })
+        .catch((err) => {
+            console.error(err);
+            res.status(500).send("Error" + err);
+        });
+}); */
+
+
+// get all movies,remove the authentication middleware
+app.get('/movies', function (req, res) => {
     Movies.find()
         .then((movies) => {
             res.status(200).json(movies);
