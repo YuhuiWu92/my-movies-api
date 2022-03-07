@@ -39,7 +39,7 @@ const cors = require('cors');
 })); */
 
 // Allow all origins
-app.use(cors{})
+app.use(cors({}));
 
 let auth = require('./auth')(app);
 const passport = require('passport');
