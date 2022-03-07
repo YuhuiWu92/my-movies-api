@@ -26,18 +26,20 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 // use CORS
 const cors = require('cors');
-// let allowedOrigins = ['http://localhost:8080', 'http://te.com'];
-// app.use(cors({
-//     origin: (origin, callback) => {
-//         if (!origin) return callback(null, true);
-//         if (allowedOrigins.indexOf(origin) === -1) { // If a specific origin isn’t found on the list of allowed origins
-//             let message = 'The CORS policy for this application doesn’t allow access from origin ' + origin;
-//             return callback(new Error(message), false);
-//         }
-//         return callback(null, true);
-//     }
-// }));
-app.use(cors{}); // Here we are allowing all the origins
+// let allowedOrigins = ['http://localhost:8080', 'http://localhost:53123', 'https://my-film-flix.herokuapp.com'];
+/* app.use(cors({
+    origin: (origin, callback) => {
+        if (!origin) return callback(null, true);
+        if (allowedOrigins.indexOf(origin) === -1) { // If a specific origin isn’t found on the list of allowed origins
+            let message = 'The CORS policy for this application doesn’t allow access from origin ' + origin;
+            return callback(new Error(message), false);
+        }
+        return callback(null, true);
+    }
+})); */
+
+// Allow all origins
+app.use(cors{})
 
 let auth = require('./auth')(app);
 const passport = require('passport');
@@ -56,8 +58,10 @@ app.get('/docs', (req, res) => {
     res.sendFile(__dirname + '/public/documentation.html');
 });
 
-// get all movies
-app.get('/movies', passport.authenticate('jwt', { session: false }), (req, res) => {
+
+
+// get all movies,remove the authentication middleware
+app.get('/movies', (req, res) => {
     Movies.find()
         .then((movies) => {
             res.status(200).json(movies);
