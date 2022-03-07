@@ -50,7 +50,7 @@ app.use(morgan('common'));
 // GET requests
 // default text response at "/"
 
-app.get('/', (req, res) => {
+app.get('/', passport.authenticate('jwt', { session: false }),(req, res) => {
     res.send('Welcome to My film flix!');
 });
 // 
