@@ -5,11 +5,11 @@ const Users = Models.User;
 const { check, validationResult } = require('express-validator');
 
 // Uncomment this only for HEROKU
-mongoose.connect(process.env.CONNECTION_URI, { useNewUrlParser: true, useUnifiedTopology: true });
+// mongoose.connect(process.env.CONNECTION_URI, { useNewUrlParser: true, useUnifiedTopology: true });
 
 
 // Uncomment this if you want to connect to Mongo Atlas DB
-// mongoose.connect("mongodb+srv://admin:admin@yuhuidb.y3ahh.mongodb.net/myFlimDB?retryWrites=true&w=majority", { useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.connect("mongodb+srv://admin:admin@yuhuidb.y3ahh.mongodb.net/myFlimDB?retryWrites=true&w=majority", { useNewUrlParser: true, useUnifiedTopology: true });
 
 // Comment this when you want to push things to heroku and uncomment if you want to connect to your local DB
 // mongoose.connect("mongodb://localhost:27017/myFlimDB", { useNewUrlParser: true, useUnifiedTopology: true });
@@ -85,7 +85,11 @@ app.get('/users', passport.authenticate('jwt', { session: false }), (req, res) =
     })
     // get a user by username
 app.get("/users/:Username", passport.authenticate('jwt', { session: false }), (req, res) => {
-    Users.findOne((user) => {
+    console.log(req.params.Username)
+    Users.findOne({Username: req.params.Username}, (err, user) => {
+        if (err) {
+            res.status(500).send("Something went wrong", err.message);
+        }
         if (!user) {
             res.status(400).send(req.params.Username + 'was not found');
         } else {
