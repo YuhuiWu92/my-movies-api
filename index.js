@@ -26,7 +26,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 // use CORS
 const cors = require('cors');
-let allowedOrigins = ['http://localhost:8080', 'http://localhost:1234', 'https://my-film-flix.herokuapp.com','https://myflix-react-client.netlify.app/'];
+/* let allowedOrigins = ['http://localhost:8080', 'http://localhost:1234', 'https://my-film-flix.herokuapp.com','https://myflix-react-client.netlify.app/'];
 app.use(cors({
     origin: (origin, callback) => {
         if (!origin) return callback(null, true);
@@ -36,10 +36,10 @@ app.use(cors({
         }
         return callback(null, true);
     }
-}));
+})); */
 
 // Allow all origins
-// app.use(cors({}));
+app.use(cors({}));
 
 let auth = require('./auth')(app);
 const passport = require('passport');
