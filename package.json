@@ -6,7 +6,7 @@
     "scripts": {
         "start": "node index.js",
         "devStart": "nodemon index.js",
-        "jsdoc":"jsdoc -c jsdoc.json"
+        "jsdoc": "jsdoc -c jsdoc.json"
     },
     "repository": {
         "type": "git",

@@ -1,19 +1,18 @@
 {
-    "plugins": [],
-    "recurseDepth": 10,
+    "plugins": ["plugins/markdown"],
     "source": {
-        "include":["out"],
+        "include": ["src"],
         "includePattern": ".js$",
-        "excludePattern": "(^|\\/|\\\\)_"
+        "excludePattern": "(node_modules/|docs)"
     },
-   
     
     "templates": {
         "cleverLinks": true,
         "monospaceLinks": true
     },
     "opts":{
-        "destination":"./out",
-        "recurse":true
+        
+        "destination": "./jsdoc",         
+        "recurse": true                 
     }
 }
